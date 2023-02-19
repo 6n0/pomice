@@ -144,18 +144,3 @@ class WebSocketOpenEvent(PomiceEvent):
     def __repr__(self) -> str:
         return f"<Pomice.WebsocketOpenEvent target={self.target!r} ssrc={self.ssrc!r}>"
 
-class QueueEnd(PomiceEvent):
-    """Fired when the pplayer queue is empty.
-       Returns the player associated with the event
-    """
-
-    def __init__(self, data: dict, player):
-        self.player = player
-        self.handler_args = self.player
-        self.queue = player.queue
-    
-    def __repr__(self) -> str:
-        if self.queue.count == 0:
-            return f"<Pomice.QueueEnd player={self.player!r}>"
-        else:
-            pass
